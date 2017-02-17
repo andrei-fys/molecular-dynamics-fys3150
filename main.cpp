@@ -13,10 +13,13 @@ using namespace std;
 
 int main(int numberOfArguments, char **argumentList)
 {
-    int numberOfUnitCells = 5;
+    int numberOfUnitCells = 3;
     double initialTemperature = UnitConverter::temperatureFromSI(300.0); // measured in Kelvin
     double latticeConstant = UnitConverter::lengthFromAngstroms(5.26); // measured in angstroms
-
+    double sigma = UnitConverter::lengthFromAngstroms(3.405);
+    double epsilon = UnitConverter::temperatureFromSI(119.8);
+    cout << "epsilon " << epsilon << endl;
+    cout << "sigma " << sigma << endl;
     // If a first argument is provided, it is the number of unit cells
     if(numberOfArguments > 1) numberOfUnitCells = atoi(argumentList[1]);
     // If a second argument is provided, it is the initial temperature (measured in kelvin)
@@ -34,8 +37,8 @@ int main(int numberOfArguments, char **argumentList)
 
     System system;
     system.createFCCLattice(numberOfUnitCells, latticeConstant, initialTemperature);
-    system.potential().setEpsilon(1.0);
-    system.potential().setSigma(1.0);
+    system.potential().setEpsilon(epsilon);
+    system.potential().setSigma(sigma);
 
     system.removeTotalMomentum();
 
@@ -48,7 +51,7 @@ int main(int numberOfArguments, char **argumentList)
             setw(20) << "KineticEnergy" <<
             setw(20) << "PotentialEnergy" <<
             setw(20) << "TotalEnergy" << endl;
-    for(int timestep=0; timestep<1000; timestep++) {
+    for(int timestep=0; timestep<10000; timestep++) {
         system.step(dt);
         statisticsSampler.sample(system);
         if( timestep % 100 == 0 ) {

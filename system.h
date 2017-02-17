@@ -10,6 +10,7 @@ class System
 {
 private:
     vec3 m_systemSize;
+    vec3 m_totalVelocity;
     VelocityVerlet m_integrator;
     std::vector<Atom*> m_atoms;
     LennardJones m_potential;
