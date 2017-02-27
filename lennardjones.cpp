@@ -38,6 +38,7 @@ void LennardJones::setEpsilon(double epsilon)
 
 void LennardJones::calculateForces(System &system){
     double halfLattice = system.systemSize()[0]/2.0;
+    m_potentialEnergy = 0;
 
     for(int i=0; i<system.atoms().size(); i++) {
        //std::cout << i <<"---" ;
@@ -82,9 +83,9 @@ void LennardJones::calculateForces(System &system){
            atom_j->force[0] += fx;
            atom_j->force[1] += fy;
            atom_j->force[2] += fz;
-           m_potentialEnergy += 4*epsilon()*((m_sigma12/inverse_dr12) - (m_sigma6/inverse_dr6));
+           m_potentialEnergy += 4*epsilon()*((m_sigma12*inverse_dr12) - (m_sigma6*inverse_dr6));
        }
     }
 
-    m_potentialEnergy = 0; // Remember to compute this in the loop
+    //m_potentialEnergy = 0; // Remember to compute this in the loop
 }

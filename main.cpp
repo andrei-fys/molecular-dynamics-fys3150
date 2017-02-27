@@ -17,7 +17,7 @@ int main(int numberOfArguments, char **argumentList)
     double initialTemperature = UnitConverter::temperatureFromSI(80); // measured in Kelvin
     double latticeConstant = UnitConverter::lengthFromAngstroms(5.26); // measured in angstroms
     double sigma = UnitConverter::lengthFromAngstroms(3.405);
-    double epsilon = UnitConverter::temperatureFromSI(400);
+    double epsilon = UnitConverter::temperatureFromSI(119.8);
     cout << "epsilon " << epsilon << endl;
     cout << "sigma " << sigma << endl;
     // If a first argument is provided, it is the number of unit cells
