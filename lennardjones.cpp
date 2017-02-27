@@ -82,6 +82,7 @@ void LennardJones::calculateForces(System &system){
            atom_j->force[0] += fx;
            atom_j->force[1] += fy;
            atom_j->force[2] += fz;
+           m_potentialEnergy += 4*epsilon()*((m_sigma12/inverse_dr12) - (m_sigma6/inverse_dr6));
        }
     }
 

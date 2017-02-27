@@ -13,11 +13,11 @@ using namespace std;
 
 int main(int numberOfArguments, char **argumentList)
 {
-    int numberOfUnitCells = 3;
-    double initialTemperature = UnitConverter::temperatureFromSI(300.0); // measured in Kelvin
+    int numberOfUnitCells = 10;
+    double initialTemperature = UnitConverter::temperatureFromSI(80); // measured in Kelvin
     double latticeConstant = UnitConverter::lengthFromAngstroms(5.26); // measured in angstroms
     double sigma = UnitConverter::lengthFromAngstroms(3.405);
-    double epsilon = UnitConverter::temperatureFromSI(119.8);
+    double epsilon = UnitConverter::temperatureFromSI(400);
     cout << "epsilon " << epsilon << endl;
     cout << "sigma " << sigma << endl;
     // If a first argument is provided, it is the number of unit cells

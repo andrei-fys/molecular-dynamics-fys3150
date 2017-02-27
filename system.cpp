@@ -45,25 +45,26 @@ void System::removeTotalMomentum() {
 
 void System::createFCCLattice(int numberOfUnitCellsEachDimension, double latticeConstant, double temperature) {
     // You should implement this function properly. Right now, 100 atoms are created uniformly placed in the system of size (10, 10, 10).
+    double argonMass = UnitConverter::massFromSI(6.63352088e-26);
     for(int i=0; i<numberOfUnitCellsEachDimension; i++) {
         for(int j=0; j<numberOfUnitCellsEachDimension; j++) {
             for(int k=0; k<numberOfUnitCellsEachDimension; k++) {
-                Atom * atom1 = new Atom(UnitConverter::massFromSI(6.63352088e-26));
+                Atom * atom1 = new Atom(argonMass);
                 atom1->position.set(i*latticeConstant,j*latticeConstant,k*latticeConstant);
                 atom1->resetVelocityMaxwellian(temperature);
                 m_atoms.push_back(atom1);
 
-                Atom * atom2 = new Atom(UnitConverter::massFromSI(6.63352088e-26));
+                Atom * atom2 = new Atom(argonMass);
                 atom2->position.set(i*latticeConstant+latticeConstant/2.,j*latticeConstant+latticeConstant/2.,k*latticeConstant);
                 atom2->resetVelocityMaxwellian(temperature);
                 m_atoms.push_back(atom2);
 
-                Atom * atom3 = new Atom(UnitConverter::massFromSI(6.63352088e-26));
+                Atom * atom3 = new Atom(argonMass);
                 atom3->position.set(i*latticeConstant,j*latticeConstant+latticeConstant/2.,k*latticeConstant+latticeConstant/2.);
                 atom3->resetVelocityMaxwellian(temperature);
                 m_atoms.push_back(atom3);
 
-                Atom * atom4 = new Atom(UnitConverter::massFromSI(6.63352088e-26));
+                Atom * atom4 = new Atom(argonMass);
                 atom4->position.set(i*latticeConstant+latticeConstant/2.,j*latticeConstant,k*latticeConstant+latticeConstant/2.);
                 atom4->resetVelocityMaxwellian(temperature);
                 m_atoms.push_back(atom4);
